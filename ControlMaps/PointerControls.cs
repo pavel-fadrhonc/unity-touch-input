@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/Input/ControlMaps/PointerControls.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Packages/com.oakus.frameworks.unity-touch-input/ControlMaps/PointerControls.inputactions'
 
 using System;
 using System.Collections;
