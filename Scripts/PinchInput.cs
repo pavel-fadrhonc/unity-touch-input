@@ -1,4 +1,6 @@
-﻿namespace of2.TouchInput
+﻿using UnityEngine;
+
+namespace of2.TouchInput
 {
     public struct PinchInput
     {
@@ -8,7 +10,7 @@
         public int InputId;
         
         /// <summary>
-        /// Total distance travelled while pinching
+        /// Total distance bewtween pinch inputs
         /// </summary>
         public float PinchDistance;
 
@@ -16,6 +18,12 @@
         /// Delta distance travelled while pinching
         /// </summary>
         public float PinchDeltaDistance;
+
+        public Vector2 Pointer0StartPosition;
+        public Vector2 Pointer0CurrentPosition;
+        
+        public Vector2 Pointer1StartPosition;
+        public Vector2 Pointer1CurrentPosition;
 
         public override string ToString()
         {

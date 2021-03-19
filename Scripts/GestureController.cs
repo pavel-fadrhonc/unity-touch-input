@@ -75,6 +75,9 @@ namespace of2.TouchInput
         /// Event fired during user performing pinching (every frame) 
         /// </summary>
         public event Action<PinchInput> Pinching;
+        
+        public event Action<PinchInput> PinchStarted;
+        public event Action<PinchInput> PinchFinished;
 
         private bool _pinching;
         private bool _secondPressed;
@@ -135,6 +138,17 @@ namespace of2.TouchInput
 
                 _pinchStartDistance = Vector2.Distance(_pinchPosStartFirst, _pinchPosStartSecond);
                 _pinchLastDistance = _pinchStartDistance;
+                
+                PinchStarted?.Invoke(new PinchInput()
+                {
+                    InputId = input.InputId,
+                    PinchDeltaDistance = 0,
+                    PinchDistance = _pinchStartDistance,
+                    Pointer0CurrentPosition = _pinchPosStartFirst,
+                    Pointer0StartPosition = _pinchPosStartFirst,
+                    Pointer1CurrentPosition = _pinchPosStartSecond,
+                    Pointer1StartPosition = _pinchPosStartSecond
+                });
             }
 
             PressedFirst?.Invoke(new SwipeInput(newGesture));
@@ -184,8 +198,24 @@ namespace of2.TouchInput
             {
                 Tapped?.Invoke(new TapInput(existingGesture));
             }
-            
-            _pinching = false;
+
+            if (_pinching)
+            {
+                _pinching = false;    
+                
+                var pinchDistance = Vector2.Distance(_posLastFirst, _posLastSecond);
+                
+                PinchFinished?.Invoke(new PinchInput()
+                {
+                    InputId = input.InputId,
+                    PinchDistance = pinchDistance,
+                    PinchDeltaDistance = pinchDistance - _pinchLastDistance,
+                    Pointer0CurrentPosition = _posLastFirst,
+                    Pointer0StartPosition = _pinchPosStartFirst,
+                    Pointer1CurrentPosition = _posLastSecond,
+                    Pointer1StartPosition = _pinchPosStartSecond
+                });                
+            }
 
             DebugInfo(existingGesture);
         }
@@ -201,6 +231,17 @@ namespace of2.TouchInput
 
             _pinchStartDistance = Vector2.Distance(_pinchPosStartFirst, _pinchPosStartSecond);
             _pinchLastDistance = _pinchStartDistance;
+            
+            PinchStarted?.Invoke(new PinchInput()
+            {
+                InputId = input.InputId,
+                PinchDeltaDistance = 0,
+                PinchDistance = _pinchStartDistance,
+                Pointer0CurrentPosition = _pinchPosStartFirst,
+                Pointer0StartPosition = _pinchPosStartFirst,
+                Pointer1CurrentPosition = _pinchPosStartSecond,
+                Pointer1StartPosition = _pinchPosStartSecond
+            });            
         }
 
         private void OnDraggedSecond(PointerInput input, double time)
@@ -214,6 +255,19 @@ namespace of2.TouchInput
         {
             _pinching = false;   
             _secondPressed = false;
+            
+            var pinchDistance = Vector2.Distance(_posLastFirst, _posLastSecond);
+            
+            PinchFinished?.Invoke(new PinchInput()
+            {
+                InputId = input.InputId,
+                PinchDistance = pinchDistance,
+                PinchDeltaDistance = pinchDistance - _pinchLastDistance,
+                Pointer0CurrentPosition = _posLastFirst,
+                Pointer0StartPosition = _pinchPosStartFirst,
+                Pointer1CurrentPosition = _posLastSecond,
+                Pointer1StartPosition = _pinchPosStartSecond
+            });
         }
 
         private void OnPinch(PointerInput input)
@@ -224,7 +278,11 @@ namespace of2.TouchInput
             {
                 InputId = input.InputId,
                 PinchDistance = pinchDistance,
-                PinchDeltaDistance = pinchDistance - _pinchLastDistance
+                PinchDeltaDistance = pinchDistance - _pinchLastDistance,
+                Pointer0CurrentPosition = _posLastFirst,
+                Pointer0StartPosition = _pinchPosStartFirst,
+                Pointer1CurrentPosition = _posLastSecond,
+                Pointer1StartPosition = _pinchPosStartSecond
             };
  
             //Debug.Log($"{nameof(GestureController)}: pinching: {pinchInput}");
