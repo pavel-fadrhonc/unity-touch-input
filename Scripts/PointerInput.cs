@@ -6,7 +6,7 @@ using UnityEngine.InputSystem.Utilities;
 using UnityEditor;
 #endif
 
-namespace InputSamples.Drawing
+namespace of2.TouchInput
 {
     /// <summary>
     /// Simple object to contain information for drag inputs.
@@ -24,26 +24,6 @@ namespace InputSamples.Drawing
         /// Position of draw input.
         /// </summary>
         public Vector2 Position;
-
-        /// <summary>
-        /// Orientation of draw input pen.
-        /// </summary>
-        public Vector2? Tilt;
-
-        /// <summary>
-        /// Pressure of draw input.
-        /// </summary>
-        public float? Pressure;
-
-        /// <summary>
-        /// Radius of draw input.
-        /// </summary>
-        public Vector2? Radius;
-
-        /// <summary>
-        /// Twist of draw input.
-        /// </summary>
-        public float? Twist;
     }
 
     // What we do in PointerInputManager is to simply create a separate action for each input we need for PointerInput.
@@ -84,21 +64,13 @@ namespace InputSamples.Drawing
         {
             var contact = context.ReadValueAsButton(this.contact);
             var pointerId = context.ReadValue<int>(inputId);
-            var pressure = context.ReadValue<float>(this.pressure);
-            var radius = context.ReadValue<Vector2, Vector2MagnitudeComparer>(this.radius);
-            var tilt = context.ReadValue<Vector2, Vector2MagnitudeComparer>(this.tilt);
             var position = context.ReadValue<Vector2, Vector2MagnitudeComparer>(this.position);
-            var twist = context.ReadValue<float>(this.twist);
 
             return new PointerInput
             {
                 Contact = contact,
                 InputId = pointerId,
                 Position = position,
-                Tilt = tilt != default ? tilt : (Vector2?)null,
-                Pressure = pressure > 0 ? pressure : (float?)null,
-                Radius = radius.sqrMagnitude > 0 ? radius : (Vector2?)null,
-                Twist = twist > 0 ? twist : (float?)null,
             };
         }
 

@@ -21,9 +21,17 @@ namespace InputSamples.Controls
             ""id"": ""03c7e318-7062-4e8e-8039-96e82fd74b50"",
             ""actions"": [
                 {
-                    ""name"": ""point"",
+                    ""name"": ""point0"",
                     ""type"": ""Value"",
                     ""id"": ""eeed27bd-2609-465e-b6ec-44fb11edf534"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""point1"",
+                    ""type"": ""Value"",
+                    ""id"": ""d40f6bff-3606-461f-a327-c665f33e526d"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
@@ -37,7 +45,7 @@ namespace InputSamples.Controls
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""point"",
+                    ""action"": ""point0"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -48,7 +56,7 @@ namespace InputSamples.Controls
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""point"",
+                    ""action"": ""point0"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -59,7 +67,7 @@ namespace InputSamples.Controls
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""point"",
+                    ""action"": ""point0"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -70,7 +78,7 @@ namespace InputSamples.Controls
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""point"",
+                    ""action"": ""point0"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -81,7 +89,7 @@ namespace InputSamples.Controls
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Touch"",
-                    ""action"": ""point"",
+                    ""action"": ""point0"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -92,7 +100,7 @@ namespace InputSamples.Controls
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Touch"",
-                    ""action"": ""point"",
+                    ""action"": ""point0"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -103,7 +111,7 @@ namespace InputSamples.Controls
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Touch"",
-                    ""action"": ""point"",
+                    ""action"": ""point0"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -114,7 +122,7 @@ namespace InputSamples.Controls
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Touch"",
-                    ""action"": ""point"",
+                    ""action"": ""point0"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -125,7 +133,73 @@ namespace InputSamples.Controls
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Touch"",
-                    ""action"": ""point"",
+                    ""action"": ""point0"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Touch1"",
+                    ""id"": ""f11ea22a-8ada-4024-bcd1-45e263f95556"",
+                    ""path"": ""PointerInput"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""point1"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""contact"",
+                    ""id"": ""5603bdbf-055a-4d56-bd69-c9241ecb1bb7"",
+                    ""path"": ""<Touchscreen>/touch1/press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""point1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""position"",
+                    ""id"": ""cf50c940-b296-4bc3-b6a8-4f0e53342950"",
+                    ""path"": ""<Touchscreen>/touch1/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""point1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""radius"",
+                    ""id"": ""f6560153-5f29-477a-bc67-179efc5a02d8"",
+                    ""path"": ""<Touchscreen>/touch1/radius"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""point1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""pressure"",
+                    ""id"": ""fd33ee30-661c-4e6a-ad6e-2e8bf9df25e8"",
+                    ""path"": ""<Touchscreen>/touch1/pressure"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""point1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""inputId"",
+                    ""id"": ""5c520ecb-cf4f-4458-b444-8b5255cd8f4e"",
+                    ""path"": ""<Touchscreen>/touch1/touchId"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""point1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 }
@@ -147,7 +221,8 @@ namespace InputSamples.Controls
 }");
             // pointer
             m_pointer = asset.FindActionMap("pointer", throwIfNotFound: true);
-            m_pointer_point = m_pointer.FindAction("point", throwIfNotFound: true);
+            m_pointer_point0 = m_pointer.FindAction("point0", throwIfNotFound: true);
+            m_pointer_point1 = m_pointer.FindAction("point1", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -197,12 +272,14 @@ namespace InputSamples.Controls
         // pointer
         private readonly InputActionMap m_pointer;
         private IPointerActions m_PointerActionsCallbackInterface;
-        private readonly InputAction m_pointer_point;
+        private readonly InputAction m_pointer_point0;
+        private readonly InputAction m_pointer_point1;
         public struct PointerActions
         {
             private @PointerControls m_Wrapper;
             public PointerActions(@PointerControls wrapper) { m_Wrapper = wrapper; }
-            public InputAction @point => m_Wrapper.m_pointer_point;
+            public InputAction @point0 => m_Wrapper.m_pointer_point0;
+            public InputAction @point1 => m_Wrapper.m_pointer_point1;
             public InputActionMap Get() { return m_Wrapper.m_pointer; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -212,16 +289,22 @@ namespace InputSamples.Controls
             {
                 if (m_Wrapper.m_PointerActionsCallbackInterface != null)
                 {
-                    @point.started -= m_Wrapper.m_PointerActionsCallbackInterface.OnPoint;
-                    @point.performed -= m_Wrapper.m_PointerActionsCallbackInterface.OnPoint;
-                    @point.canceled -= m_Wrapper.m_PointerActionsCallbackInterface.OnPoint;
+                    @point0.started -= m_Wrapper.m_PointerActionsCallbackInterface.OnPoint0;
+                    @point0.performed -= m_Wrapper.m_PointerActionsCallbackInterface.OnPoint0;
+                    @point0.canceled -= m_Wrapper.m_PointerActionsCallbackInterface.OnPoint0;
+                    @point1.started -= m_Wrapper.m_PointerActionsCallbackInterface.OnPoint1;
+                    @point1.performed -= m_Wrapper.m_PointerActionsCallbackInterface.OnPoint1;
+                    @point1.canceled -= m_Wrapper.m_PointerActionsCallbackInterface.OnPoint1;
                 }
                 m_Wrapper.m_PointerActionsCallbackInterface = instance;
                 if (instance != null)
                 {
-                    @point.started += instance.OnPoint;
-                    @point.performed += instance.OnPoint;
-                    @point.canceled += instance.OnPoint;
+                    @point0.started += instance.OnPoint0;
+                    @point0.performed += instance.OnPoint0;
+                    @point0.canceled += instance.OnPoint0;
+                    @point1.started += instance.OnPoint1;
+                    @point1.performed += instance.OnPoint1;
+                    @point1.canceled += instance.OnPoint1;
                 }
             }
         }
@@ -246,7 +329,8 @@ namespace InputSamples.Controls
         }
         public interface IPointerActions
         {
-            void OnPoint(InputAction.CallbackContext context);
+            void OnPoint0(InputAction.CallbackContext context);
+            void OnPoint1(InputAction.CallbackContext context);
         }
     }
 }

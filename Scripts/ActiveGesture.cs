@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace InputSamples.Gestures
+namespace of2.TouchInput
 {
     /// <summary>
     /// An in-progress potential gesture for given input.

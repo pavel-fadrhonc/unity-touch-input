@@ -3,15 +3,14 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using InputSamples.Drawing;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace InputSamples.Gestures
+namespace of2.TouchInput
 {
     /// <summary>
     /// Controller that interprets takes pointer input from <see cref="PointerInputManager"/> and detects
-    /// directional swipes and detects taps.
+    /// directional swipes, taps and pinches.
     /// </summary>
     public class GestureController : MonoBehaviour
     {
@@ -48,9 +47,14 @@ namespace InputSamples.Gestures
         private readonly Dictionary<int, ActiveGesture> activeGestures = new Dictionary<int, ActiveGesture>();
 
         /// <summary>
-        /// Event fired when the user presses on the screen.
+        /// Event fired when the user presses first finger on the screen.
         /// </summary>
-        public event Action<SwipeInput>   Pressed;
+        public event Action<SwipeInput> PressedFirst;
+
+        /// <summary>
+        /// Event fired when the user presses second finger on the screen.
+        /// </summary>
+        public event Action<SwipeInput> PressedSecond;
 
         /// <summary>
         /// Event fired for every motion (possibly multiple times a frame) of a potential swipe gesture.
@@ -66,12 +70,30 @@ namespace InputSamples.Gestures
         /// Event fired when a user performs a tap gesture, on releasing.
         /// </summary>
         public event Action<TapInput> Tapped;
+        
+        /// <summary>
+        /// Event fired during user performing pinching (every frame) 
+        /// </summary>
+        public event Action<PinchInput> Pinching;
+
+        private bool _pinching;
+        private bool _secondPressed;
+        private float _pinchStartDistance;
+        private float _pinchLastDistance;
+        private Vector2 _pinchPosStartFirst;
+        private Vector2 _pinchPosStartSecond;
+        private Vector2 _posLastFirst;
+        private Vector2 _posLastSecond;
 
         protected virtual void Awake()
         {
-            inputManager.Pressed += OnPressed;
-            inputManager.Dragged += OnDragged;
-            inputManager.Released += OnReleased;
+            inputManager.PressedFirst += OnPressedFirst;
+            inputManager.DraggedFirst += OnDraggedFirst;
+            inputManager.ReleasedFirst += OnReleasedFirst;
+            
+            inputManager.PressedSecond += OnPressedSecond;
+            inputManager.DraggedSecond += OnDraggedSecond;
+            inputManager.ReleasedSecond += OnReleasedSecond;
         }
 
         /// <summary>
@@ -93,7 +115,7 @@ namespace InputSamples.Gestures
                 (gesture.StartTime - gesture.EndTime) <= maxTapDuration;
         }
 
-        private void OnPressed(PointerInput input, double time)
+        private void OnPressedFirst(PointerInput input, double time)
         {
             Debug.Assert(!activeGestures.ContainsKey(input.InputId));
 
@@ -101,11 +123,24 @@ namespace InputSamples.Gestures
             activeGestures.Add(input.InputId, newGesture);
 
             DebugInfo(newGesture);
+            
+            _posLastFirst = input.Position;
 
-            Pressed?.Invoke(new SwipeInput(newGesture));
+            if (_secondPressed)
+            {
+                _pinching = true;
+                
+                _pinchPosStartFirst = _posLastFirst;
+                _pinchPosStartSecond = _posLastSecond;
+
+                _pinchStartDistance = Vector2.Distance(_pinchPosStartFirst, _pinchPosStartSecond);
+                _pinchLastDistance = _pinchStartDistance;
+            }
+
+            PressedFirst?.Invoke(new SwipeInput(newGesture));
         }
 
-        private void OnDragged(PointerInput input, double time)
+        private void OnDraggedFirst(PointerInput input, double time)
         {
             if (!activeGestures.TryGetValue(input.InputId, out var existingGesture))
             {
@@ -120,10 +155,16 @@ namespace InputSamples.Gestures
                 PotentiallySwiped?.Invoke(new SwipeInput(existingGesture));
             }
 
+            if (_pinching)
+            {
+                _posLastFirst = input.Position;
+                OnPinch(input);
+            }
+            
             DebugInfo(existingGesture);
         }
 
-        private void OnReleased(PointerInput input, double time)
+        private void OnReleasedFirst(PointerInput input, double time)
         {
             if (!activeGestures.TryGetValue(input.InputId, out var existingGesture))
             {
@@ -143,8 +184,53 @@ namespace InputSamples.Gestures
             {
                 Tapped?.Invoke(new TapInput(existingGesture));
             }
+            
+            _pinching = false;
 
             DebugInfo(existingGesture);
+        }
+
+        private void OnPressedSecond(PointerInput input, double time)
+        {
+            _pinching = true;
+            _secondPressed = true;
+
+            _pinchPosStartFirst = _posLastFirst;
+            _pinchPosStartSecond = input.Position;
+            _posLastSecond = _pinchPosStartSecond;
+
+            _pinchStartDistance = Vector2.Distance(_pinchPosStartFirst, _pinchPosStartSecond);
+            _pinchLastDistance = _pinchStartDistance;
+        }
+
+        private void OnDraggedSecond(PointerInput input, double time)
+        {
+            _posLastSecond = input.Position;
+            if (_pinching)
+                OnPinch(input);
+        }
+
+        private void OnReleasedSecond(PointerInput input, double time)
+        {
+            _pinching = false;   
+            _secondPressed = false;
+        }
+
+        private void OnPinch(PointerInput input)
+        {
+            var pinchDistance = Vector2.Distance(_posLastFirst, _posLastSecond);
+
+            var pinchInput = new PinchInput()
+            {
+                InputId = input.InputId,
+                PinchDistance = pinchDistance,
+                PinchDeltaDistance = pinchDistance - _pinchLastDistance
+            };
+ 
+            //Debug.Log($"{nameof(GestureController)}: pinching: {pinchInput}");
+            Pinching?.Invoke(pinchInput);
+            
+            _pinchLastDistance = pinchDistance;
         }
 
         private void DebugInfo(ActiveGesture gesture)

@@ -6,9 +6,17 @@
             "id": "03c7e318-7062-4e8e-8039-96e82fd74b50",
             "actions": [
                 {
-                    "name": "point",
+                    "name": "point0",
                     "type": "Value",
                     "id": "eeed27bd-2609-465e-b6ec-44fb11edf534",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "point1",
+                    "type": "Value",
+                    "id": "d40f6bff-3606-461f-a327-c665f33e526d",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
@@ -22,7 +30,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "point",
+                    "action": "point0",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -33,7 +41,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "point",
+                    "action": "point0",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -44,7 +52,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "point",
+                    "action": "point0",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -55,7 +63,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "point",
+                    "action": "point0",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -66,7 +74,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Touch",
-                    "action": "point",
+                    "action": "point0",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -77,7 +85,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Touch",
-                    "action": "point",
+                    "action": "point0",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -88,7 +96,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Touch",
-                    "action": "point",
+                    "action": "point0",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -99,7 +107,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Touch",
-                    "action": "point",
+                    "action": "point0",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -110,7 +118,73 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Touch",
-                    "action": "point",
+                    "action": "point0",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Touch1",
+                    "id": "f11ea22a-8ada-4024-bcd1-45e263f95556",
+                    "path": "PointerInput",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "point1",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "contact",
+                    "id": "5603bdbf-055a-4d56-bd69-c9241ecb1bb7",
+                    "path": "<Touchscreen>/touch1/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "point1",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "position",
+                    "id": "cf50c940-b296-4bc3-b6a8-4f0e53342950",
+                    "path": "<Touchscreen>/touch1/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "point1",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "radius",
+                    "id": "f6560153-5f29-477a-bc67-179efc5a02d8",
+                    "path": "<Touchscreen>/touch1/radius",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "point1",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "pressure",
+                    "id": "fd33ee30-661c-4e6a-ad6e-2e8bf9df25e8",
+                    "path": "<Touchscreen>/touch1/pressure",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "point1",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "inputId",
+                    "id": "5c520ecb-cf4f-4458-b444-8b5255cd8f4e",
+                    "path": "<Touchscreen>/touch1/touchId",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "point1",
                     "isComposite": false,
                     "isPartOfComposite": true
                 }

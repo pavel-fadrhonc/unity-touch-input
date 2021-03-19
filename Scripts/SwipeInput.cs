@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace InputSamples.Gestures
+namespace of2.TouchInput
 {
     /// <summary>
     /// Simple object to contain information for a swipe input.

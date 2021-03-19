@@ -1,7 +1,7 @@
 {
     "name": "com.oakus.frameworks.unity-touch-input",
     "displayName": "Unity Touch Input",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "unity": "2019.3",
     "description": "Library for handling touch input using Unity Input system.",
     "keywords": ["framework", "tools"],
