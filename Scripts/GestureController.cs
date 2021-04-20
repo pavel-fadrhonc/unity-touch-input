@@ -169,9 +169,10 @@ namespace of2.TouchInput
                 PotentiallySwiped?.Invoke(new SwipeInput(existingGesture));
             }
 
+            _posLastFirst = input.Position;
+            
             if (_pinching)
             {
-                _posLastFirst = input.Position;
                 OnPinch(input);
             }
             
